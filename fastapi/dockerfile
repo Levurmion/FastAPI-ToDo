@@ -1,0 +1,18 @@
+FROM python:3.10.13-alpine3.19 as dev
+
+RUN apk add --update --no-cache --virtual .tmp-build-deps \
+    gcc libc-dev linux-headers postgresql-dev \
+    && apk add libffi-dev
+
+RUN pip install psycopg2-binary
+
+WORKDIR /app/
+
+COPY requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt
+
+COPY ./src ./src
+
+# set host to 0.0.0.0 to allow traffic through docker container
+CMD ["uvicorn", "--app-dir=./src" , "--host=0.0.0.0", "main:app", "--reload"]

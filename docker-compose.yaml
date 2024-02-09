@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:alpine3.19
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_todo:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=todo
+  fastapi:
+    build:
+      context: fastapi
+      dockerfile: dockerfile
+      target: dev
+    ports:
+      - 8000:8000
+    volumes:
+      - "./fastapi:/app"
+      - "/app/venv"
+    env_file:
+      - "./fastapi/.env.dev"
+  frontend:
+    build:
+      dockerfile: dockerfile
+      context: frontend
+      target: dev
+    ports:
+      - "3000:3000"
+    env_file:
+      - "./frontend/.env.local"
+    restart: always
+    command: sh -c "npm install && npm run dev"
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /app/
+      # override bind mount by specifying as Docker-managed volumes
+      - /app/node_modules   # persisting as bind mount will populate the container with OS-specific packages
+      - /app/.next          # persisting as bind mount will populate the container with OS-specific artefacts
+
+volumes:
+  postgres_todo:
