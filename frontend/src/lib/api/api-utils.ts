@@ -8,6 +8,7 @@ import {
     PathResponses,
     ValidPathMethods,
 } from "./api-utils.types";
+import { createBearerToken } from "../tokens/tokens";
 
 const clientAxios = axios.create({
     baseURL: "http://localhost:8000",
@@ -26,19 +27,15 @@ export const replacePathParams = <P extends ApiPaths>(
 export const generateQueryParams = (
     queryParams: { [queryParamName: string]: string } | undefined
 ) => {
-    const queryParamsWithApiKey = {
-        ...(queryParams ?? {}),
-    };
-    return new URLSearchParams(queryParamsWithApiKey).toString();
+    return new URLSearchParams(queryParams).toString();
 };
-
 
 /**
  * Typesafe client-side Posts API fetching utility function.
  * @param path API URL path
  * @param httpMethod HTTP method available for the selected path
  * @param requestConfig request body, path parameters, and query parameters
- * @returns 
+ * @returns
  */
 export const fetchPostsApi = async <P extends ApiPaths, M extends ValidPathMethods<P>>(
     path: P,
@@ -54,6 +51,13 @@ export const fetchPostsApi = async <P extends ApiPaths, M extends ValidPathMetho
         method: httpMethod as string,
         params: queryParams,
         data: requestBody?.data,
+        headers: {
+            "Content-Type":
+                typeof requestBody?.contentType === "string"
+                    ? requestBody.contentType
+                    : "application/json",
+            Authorization: createBearerToken(),
+        },
     });
 
     return response;

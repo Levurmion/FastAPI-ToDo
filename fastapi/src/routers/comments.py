@@ -12,7 +12,7 @@ router = APIRouter(
 post_not_found_exception = HTTPException(status_code=400, detail="post not found")
 comment_not_found_exception = HTTPException(status_code=404, detail="comment not found")
 
-@router.post("/", response_model=schemas.Comment)
+@router.post("", response_model=schemas.Comment)
 def create_comment(comment: schemas.CommentCreate, token: AuthToken, db: Session = Depends(create_db)):
     post = crud.get_post_by_id(db, comment.post_id)
     if post is None:

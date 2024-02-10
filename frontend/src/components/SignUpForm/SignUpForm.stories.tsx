@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import SignUpForm from "./SignUpForm";
-import { within, fireEvent, userEvent } from "@storybook/testing-library"
+import { within, userEvent } from "@storybook/testing-library"
 
 const meta = {
     title: "Components/Sign Up Form",
@@ -26,7 +26,7 @@ export const Success: Story = {
                 method: 'POST',
                 status: 200,
                 response: {},
-                delay: 3000
+                delay: 1000
             }
         ]
     },
@@ -54,7 +54,7 @@ export const Failure: Story = {
                 method: 'POST',
                 status: 409,
                 response: {},
-                delay: 3000
+                delay: 1000
             }
         ]
     },

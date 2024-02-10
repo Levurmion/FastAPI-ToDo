@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { fetchPostsApi } from "@/lib/api/api-utils";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useWindowClickOnce } from "@/lib/hooks/useEffectHooks";
 
 const signupValidationSchema = Yup.object().shape({
     username: Yup.string().required("required!"),
@@ -29,7 +30,7 @@ const SignUpForm = () => {
     const [submitStatus, setSubmitStatus] = useState<
         "username error" | "ok" | "submitting" | "idle"
     >("idle");
-    const router = useRouter()
+    const router = useRouter();
 
     const handleSubmit = async (values: typeof initialValues) => {
         const body = {
@@ -49,8 +50,8 @@ const SignUpForm = () => {
         if (response.status === 200) {
             setSubmitStatus("ok");
             setTimeout(() => {
-                router.push("/")
-            }, 500)
+                router.push("/");
+            }, 500);
         } else if (response.status === 409) {
             setSubmitStatus("username error");
         }
@@ -69,13 +70,13 @@ const SignUpForm = () => {
         }
     };
 
-    useEffect(() => {
-        if (submitStatus === "username error" || submitStatus === "ok") {
-            const resetButtonCb = () => setSubmitStatus("idle");
-            window.addEventListener("click", resetButtonCb);
-            return () => window.removeEventListener("click", resetButtonCb);
+    useWindowClickOnce(
+        () => setSubmitStatus("idle"),
+        [submitStatus],
+        () => {
+            return submitStatus === "username error" || submitStatus === "ok";
         }
-    }, [submitStatus]);
+    );
 
     return (
         <Formik
@@ -90,8 +91,15 @@ const SignUpForm = () => {
                             username
                         </label>
                         <TextInput
-                            error={(errors.username !== undefined && touched.username) || submitStatus === "username error"}
-                            success={!errors.username && touched.username && submitStatus !== "username error"}
+                            error={
+                                (errors.username !== undefined && touched.username) ||
+                                submitStatus === "username error"
+                            }
+                            success={
+                                !errors.username &&
+                                touched.username &&
+                                submitStatus !== "username error"
+                            }
                             aria-label="username"
                             name="username"
                             placeholder="username"

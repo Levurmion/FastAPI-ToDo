@@ -14,7 +14,9 @@
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": { "$ref": "#/components/schemas/UserCreate" }
+                            "schema": {
+                                "$ref": "#/components/schemas/UserCreate"
+                            }
                         }
                     },
                     "required": true
@@ -24,7 +26,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/User" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
                             }
                         }
                     },
@@ -32,7 +36,9 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -57,13 +63,21 @@
                 "responses": {
                     "200": {
                         "description": "Successful Response",
-                        "content": { "application/json": { "schema": {} } }
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthToken"
+                                }
+                            }
+                        }
                     },
                     "422": {
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -80,12 +94,18 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/User" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
                             }
                         }
                     }
                 },
-                "security": [{ "OAuth2PasswordBearer": [] }]
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
             },
             "delete": {
                 "tags": ["users"],
@@ -94,10 +114,18 @@
                 "responses": {
                     "200": {
                         "description": "Successful Response",
-                        "content": { "application/json": { "schema": {} } }
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 },
-                "security": [{ "OAuth2PasswordBearer": [] }]
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
             }
         },
         "/users/{user_id}/posts": {
@@ -105,13 +133,20 @@
                 "tags": ["users"],
                 "summary": "Get User Posts",
                 "operationId": "get_user_posts_users__user_id__posts_get",
-                "security": [{ "OAuth2PasswordBearer": [] }],
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "user_id",
                         "in": "path",
                         "required": true,
-                        "schema": { "type": "integer", "title": "User Id" }
+                        "schema": {
+                            "type": "integer",
+                            "title": "User Id"
+                        }
                     }
                 ],
                 "responses": {
@@ -121,7 +156,9 @@
                             "application/json": {
                                 "schema": {
                                     "type": "array",
-                                    "items": { "$ref": "#/components/schemas/Post" },
+                                    "items": {
+                                        "$ref": "#/components/schemas/Post"
+                                    },
                                     "title": "Response Get User Posts Users  User Id  Posts Get"
                                 }
                             }
@@ -131,7 +168,9 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -143,13 +182,20 @@
                 "tags": ["posts"],
                 "summary": "Get Post",
                 "operationId": "get_post_posts__post_id__get",
-                "security": [{ "OAuth2PasswordBearer": [] }],
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "post_id",
                         "in": "path",
                         "required": true,
-                        "schema": { "type": "integer", "title": "Post Id" }
+                        "schema": {
+                            "type": "integer",
+                            "title": "Post Id"
+                        }
                     }
                 ],
                 "responses": {
@@ -157,7 +203,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/Post" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
                             }
                         }
                     },
@@ -165,7 +213,9 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -175,20 +225,29 @@
                 "tags": ["posts"],
                 "summary": "Edit Post",
                 "operationId": "edit_post_posts__post_id__put",
-                "security": [{ "OAuth2PasswordBearer": [] }],
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "post_id",
                         "in": "path",
                         "required": true,
-                        "schema": { "type": "integer", "title": "Post Id" }
+                        "schema": {
+                            "type": "integer",
+                            "title": "Post Id"
+                        }
                     }
                 ],
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
-                            "schema": { "$ref": "#/components/schemas/PostCreate" }
+                            "schema": {
+                                "$ref": "#/components/schemas/PostCreate"
+                            }
                         }
                     }
                 },
@@ -197,7 +256,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/Post" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
                             }
                         }
                     },
@@ -205,7 +266,9 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -215,25 +278,38 @@
                 "tags": ["posts"],
                 "summary": "Delete Post",
                 "operationId": "delete_post_posts__post_id__delete",
-                "security": [{ "OAuth2PasswordBearer": [] }],
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "post_id",
                         "in": "path",
                         "required": true,
-                        "schema": { "type": "integer", "title": "Post Id" }
+                        "schema": {
+                            "type": "integer",
+                            "title": "Post Id"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Successful Response",
-                        "content": { "application/json": { "schema": {} } }
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "422": {
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -245,13 +321,20 @@
                 "tags": ["posts"],
                 "summary": "Get Likes On Post",
                 "operationId": "get_likes_on_post_posts__post_id__likes_get",
-                "security": [{ "OAuth2PasswordBearer": [] }],
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "post_id",
                         "in": "path",
                         "required": true,
-                        "schema": { "type": "integer", "title": "Post Id" }
+                        "schema": {
+                            "type": "integer",
+                            "title": "Post Id"
+                        }
                     }
                 ],
                 "responses": {
@@ -261,7 +344,9 @@
                             "application/json": {
                                 "schema": {
                                     "type": "array",
-                                    "items": { "$ref": "#/components/schemas/Like" },
+                                    "items": {
+                                        "$ref": "#/components/schemas/Like"
+                                    },
                                     "title": "Response Get Likes On Post Posts  Post Id  Likes Get"
                                 }
                             }
@@ -271,7 +356,9 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -283,13 +370,20 @@
                 "tags": ["posts"],
                 "summary": "Get Comments On Post",
                 "operationId": "get_comments_on_post_posts__post_id__comments_get",
-                "security": [{ "OAuth2PasswordBearer": [] }],
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "post_id",
                         "in": "path",
                         "required": true,
-                        "schema": { "type": "integer", "title": "Post Id" }
+                        "schema": {
+                            "type": "integer",
+                            "title": "Post Id"
+                        }
                     }
                 ],
                 "responses": {
@@ -299,7 +393,9 @@
                             "application/json": {
                                 "schema": {
                                     "type": "array",
-                                    "items": { "$ref": "#/components/schemas/Comment" },
+                                    "items": {
+                                        "$ref": "#/components/schemas/Comment"
+                                    },
                                     "title": "Response Get Comments On Post Posts  Post Id  Comments Get"
                                 }
                             }
@@ -309,22 +405,26 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
                 }
             }
         },
-        "/posts/": {
+        "/posts": {
             "post": {
                 "tags": ["posts"],
                 "summary": "Create Post",
-                "operationId": "create_post_posts__post",
+                "operationId": "create_post_posts_post",
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": { "$ref": "#/components/schemas/PostCreate" }
+                            "schema": {
+                                "$ref": "#/components/schemas/PostCreate"
+                            }
                         }
                     },
                     "required": true
@@ -334,7 +434,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/Post" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
                             }
                         }
                     },
@@ -342,23 +444,117 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
                 },
-                "security": [{ "OAuth2PasswordBearer": [] }]
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
             }
         },
-        "/comments/": {
+        "/posts/{post_id}/like": {
+            "post": {
+                "tags": ["posts"],
+                "summary": "Like A Post",
+                "operationId": "like_a_post_posts__post_id__like_post",
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "post_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Post Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Like"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["posts"],
+                "summary": "Remove Like From A Post",
+                "operationId": "remove_like_from_a_post_posts__post_id__like_delete",
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "post_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "title": "Post Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/comments": {
             "post": {
                 "tags": ["comments"],
                 "summary": "Create Comment",
-                "operationId": "create_comment_comments__post",
+                "operationId": "create_comment_comments_post",
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": { "$ref": "#/components/schemas/CommentCreate" }
+                            "schema": {
+                                "$ref": "#/components/schemas/CommentCreate"
+                            }
                         }
                     },
                     "required": true
@@ -368,7 +564,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/Comment" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
                             }
                         }
                     },
@@ -376,12 +574,18 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
                 },
-                "security": [{ "OAuth2PasswordBearer": [] }]
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
             }
         },
         "/comments/{comment_id}": {
@@ -389,20 +593,29 @@
                 "tags": ["comments"],
                 "summary": "Edit Comment",
                 "operationId": "edit_comment_comments__comment_id__put",
-                "security": [{ "OAuth2PasswordBearer": [] }],
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ],
                 "parameters": [
                     {
                         "name": "comment_id",
                         "in": "path",
                         "required": true,
-                        "schema": { "type": "integer", "title": "Comment Id" }
+                        "schema": {
+                            "type": "integer",
+                            "title": "Comment Id"
+                        }
                     }
                 ],
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
-                            "schema": { "$ref": "#/components/schemas/CommentCreate" }
+                            "schema": {
+                                "$ref": "#/components/schemas/CommentCreate"
+                            }
                         }
                     }
                 },
@@ -411,7 +624,9 @@
                         "description": "Successful Response",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/Comment" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
                             }
                         }
                     },
@@ -419,69 +634,9 @@
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/likes/post/{post_id}": {
-            "post": {
-                "tags": ["likes"],
-                "summary": "Like A Post",
-                "operationId": "like_a_post_likes_post__post_id__post",
-                "security": [{ "OAuth2PasswordBearer": [] }],
-                "parameters": [
-                    {
-                        "name": "post_id",
-                        "in": "path",
-                        "required": true,
-                        "schema": { "type": "integer", "title": "Post Id" }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": {
-                            "application/json": {
-                                "schema": { "$ref": "#/components/schemas/Like" }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": ["likes"],
-                "summary": "Remove Like From A Post",
-                "operationId": "remove_like_from_a_post_likes_post__post_id__delete",
-                "security": [{ "OAuth2PasswordBearer": [] }],
-                "parameters": [
-                    {
-                        "name": "post_id",
-                        "in": "path",
-                        "required": true,
-                        "schema": { "type": "integer", "title": "Post Id" }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful Response",
-                        "content": { "application/json": { "schema": {} } }
-                    },
-                    "422": {
-                        "description": "Validation Error",
-                        "content": {
-                            "application/json": {
-                                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
                             }
                         }
                     }
@@ -495,7 +650,11 @@
                 "responses": {
                     "200": {
                         "description": "Successful Response",
-                        "content": { "application/json": { "schema": {} } }
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
                 }
             }
@@ -503,21 +662,69 @@
     },
     "components": {
         "schemas": {
+            "AuthToken": {
+                "properties": {
+                    "access_token": {
+                        "type": "string",
+                        "title": "Access Token"
+                    },
+                    "token_type": {
+                        "type": "string",
+                        "title": "Token Type",
+                        "default": "bearer"
+                    }
+                },
+                "type": "object",
+                "required": ["access_token"],
+                "title": "AuthToken"
+            },
             "Body_authenticate_user_auth_sign_in_post": {
                 "properties": {
                     "grant_type": {
-                        "anyOf": [{ "type": "string", "pattern": "password" }, { "type": "null" }],
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "pattern": "password"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Grant Type"
                     },
-                    "username": { "type": "string", "title": "Username" },
-                    "password": { "type": "string", "title": "Password" },
-                    "scope": { "type": "string", "title": "Scope", "default": "" },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    },
+                    "scope": {
+                        "type": "string",
+                        "title": "Scope",
+                        "default": ""
+                    },
                     "client_id": {
-                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Client Id"
                     },
                     "client_secret": {
-                        "anyOf": [{ "type": "string" }, { "type": "null" }],
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Client Secret"
                     }
                 },
@@ -527,13 +734,35 @@
             },
             "Comment": {
                 "properties": {
-                    "content": { "type": "string", "title": "Content" },
-                    "commenter_id": { "type": "integer", "title": "Commenter Id" },
-                    "post_id": { "type": "integer", "title": "Post Id" },
-                    "id": { "type": "integer", "title": "Id" },
-                    "posted_on": { "type": "string", "format": "date-time", "title": "Posted On" },
-                    "edited": { "type": "boolean", "title": "Edited" },
-                    "commenter": { "type": "string", "title": "Commenter" }
+                    "content": {
+                        "type": "string",
+                        "title": "Content"
+                    },
+                    "commenter_id": {
+                        "type": "integer",
+                        "title": "Commenter Id"
+                    },
+                    "post_id": {
+                        "type": "integer",
+                        "title": "Post Id"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    },
+                    "posted_on": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Posted On"
+                    },
+                    "edited": {
+                        "type": "boolean",
+                        "title": "Edited"
+                    },
+                    "commenter": {
+                        "type": "string",
+                        "title": "Commenter"
+                    }
                 },
                 "type": "object",
                 "required": [
@@ -549,9 +778,18 @@
             },
             "CommentCreate": {
                 "properties": {
-                    "content": { "type": "string", "title": "Content" },
-                    "commenter_id": { "type": "integer", "title": "Commenter Id" },
-                    "post_id": { "type": "integer", "title": "Post Id" }
+                    "content": {
+                        "type": "string",
+                        "title": "Content"
+                    },
+                    "commenter_id": {
+                        "type": "integer",
+                        "title": "Commenter Id"
+                    },
+                    "post_id": {
+                        "type": "integer",
+                        "title": "Post Id"
+                    }
                 },
                 "type": "object",
                 "required": ["content", "commenter_id", "post_id"],
@@ -560,7 +798,9 @@
             "HTTPValidationError": {
                 "properties": {
                     "detail": {
-                        "items": { "$ref": "#/components/schemas/ValidationError" },
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
                         "type": "array",
                         "title": "Detail"
                     }
@@ -570,11 +810,27 @@
             },
             "Like": {
                 "properties": {
-                    "user_id": { "type": "integer", "title": "User Id" },
-                    "post_id": { "type": "integer", "title": "Post Id" },
-                    "id": { "type": "integer", "title": "Id" },
-                    "liked_on": { "type": "string", "format": "date-time", "title": "Liked On" },
-                    "user": { "type": "string", "title": "User" }
+                    "user_id": {
+                        "type": "integer",
+                        "title": "User Id"
+                    },
+                    "post_id": {
+                        "type": "integer",
+                        "title": "Post Id"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    },
+                    "liked_on": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Liked On"
+                    },
+                    "user": {
+                        "type": "string",
+                        "title": "User"
+                    }
                 },
                 "type": "object",
                 "required": ["user_id", "post_id", "id", "liked_on", "user"],
@@ -582,25 +838,52 @@
             },
             "Post": {
                 "properties": {
-                    "content": { "type": "string", "title": "Content" },
-                    "poster_id": { "type": "integer", "title": "Poster Id" },
-                    "id": { "type": "integer", "title": "Id" },
-                    "posted_on": { "type": "string", "format": "date-time", "title": "Posted On" },
-                    "edited": { "type": "boolean", "title": "Edited" },
+                    "content": {
+                        "type": "string",
+                        "title": "Content"
+                    },
+                    "poster_id": {
+                        "type": "integer",
+                        "title": "Poster Id"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    },
+                    "posted_on": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Posted On"
+                    },
+                    "edited": {
+                        "type": "boolean",
+                        "title": "Edited"
+                    },
                     "comments": {
                         "anyOf": [
                             {
-                                "items": { "$ref": "#/components/schemas/Comment" },
+                                "items": {
+                                    "$ref": "#/components/schemas/Comment"
+                                },
                                 "type": "array"
                             },
-                            { "type": "null" }
+                            {
+                                "type": "null"
+                            }
                         ],
                         "title": "Comments"
                     },
                     "likes": {
                         "anyOf": [
-                            { "items": { "$ref": "#/components/schemas/Like" }, "type": "array" },
-                            { "type": "null" }
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/Like"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
                         ],
                         "title": "Likes"
                     }
@@ -611,8 +894,14 @@
             },
             "PostCreate": {
                 "properties": {
-                    "content": { "type": "string", "title": "Content" },
-                    "poster_id": { "type": "integer", "title": "Poster Id" }
+                    "content": {
+                        "type": "string",
+                        "title": "Content"
+                    },
+                    "poster_id": {
+                        "type": "integer",
+                        "title": "Poster Id"
+                    }
                 },
                 "type": "object",
                 "required": ["content", "poster_id"],
@@ -620,33 +909,65 @@
             },
             "User": {
                 "properties": {
-                    "username": { "type": "string", "title": "Username" },
-                    "id": { "type": "integer", "title": "Id" },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "title": "Id"
+                    },
                     "signed_up_on": {
-                        "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
                         "title": "Signed Up On"
                     },
                     "posts": {
                         "anyOf": [
-                            { "items": { "$ref": "#/components/schemas/Post" }, "type": "array" },
-                            { "type": "null" }
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/Post"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
                         ],
                         "title": "Posts"
                     },
                     "comments": {
                         "anyOf": [
                             {
-                                "items": { "$ref": "#/components/schemas/Comment" },
+                                "items": {
+                                    "$ref": "#/components/schemas/Comment"
+                                },
                                 "type": "array"
                             },
-                            { "type": "null" }
+                            {
+                                "type": "null"
+                            }
                         ],
                         "title": "Comments"
                     },
                     "likes": {
                         "anyOf": [
-                            { "items": { "$ref": "#/components/schemas/Like" }, "type": "array" },
-                            { "type": "null" }
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/Like"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
                         ],
                         "title": "Likes"
                     }
@@ -657,8 +978,14 @@
             },
             "UserCreate": {
                 "properties": {
-                    "username": { "type": "string", "title": "Username" },
-                    "password": { "type": "string", "title": "Password" }
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    }
                 },
                 "type": "object",
                 "required": ["username", "password"],
@@ -667,12 +994,27 @@
             "ValidationError": {
                 "properties": {
                     "loc": {
-                        "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
                         "type": "array",
                         "title": "Location"
                     },
-                    "msg": { "type": "string", "title": "Message" },
-                    "type": { "type": "string", "title": "Error Type" }
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
                 },
                 "type": "object",
                 "required": ["loc", "msg", "type"],
@@ -682,7 +1024,12 @@
         "securitySchemes": {
             "OAuth2PasswordBearer": {
                 "type": "oauth2",
-                "flows": { "password": { "scopes": {}, "tokenUrl": "/auth/sign-in" } }
+                "flows": {
+                    "password": {
+                        "scopes": {},
+                        "tokenUrl": "/auth/sign-in"
+                    }
+                }
             }
         }
     }

@@ -11,8 +11,8 @@ const preview: Preview = {
                 date: /Date$/i,
             },
         },
-        nextRouter: {
-          Provider: AppRouterContext.Provider
+        nextjs: {
+          appDirectory: true
         }
     },
 };

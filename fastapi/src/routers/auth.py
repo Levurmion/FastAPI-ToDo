@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from typing import Annotated
 from sqlalchemy.orm import Session
 from data import crud
-from data.schemas import user
+from data import schemas
 from data.database import create_db
 from data.tokens import verify_password, generate_access_token
 
@@ -12,14 +12,14 @@ router = APIRouter(
     tags=["auth"]
 )
 
-@router.post("/sign-up", response_model=user.User)
-def create_user(user: user.UserCreate, db: Session = Depends(create_db)) -> user.User:
-    username_exists = crud.get_user_by_username(db, user.username)
+@router.post("/sign-up", response_model=schemas.User)
+def create_user(user: schemas.UserCreate, db: Session = Depends(create_db)) -> schemas.User:
+    username_exists = crud.get_user_by_username(db, schemas.username)
     if username_exists:
         raise HTTPException(status_code=409, detail="username already exists")
     return crud.create_user(db, user)
 
-@router.post("/sign-in")
+@router.post("/sign-in", response_model=schemas.AuthToken)
 def authenticate_user(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db: Session = Depends(create_db)):
     user = crud.get_user_by_username(db, form_data.username)
     

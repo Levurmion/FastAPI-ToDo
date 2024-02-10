@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from routers import authRouter, userRouter, postsRouter, commentsRouter, likesRouter
+from routers import authRouter, userRouter, postsRouter, commentsRouter
 from data import schemas, database, crud
 from sqlalchemy.orm import Session
 
@@ -20,7 +20,6 @@ app.include_router(authRouter)
 app.include_router(userRouter)
 app.include_router(postsRouter)
 app.include_router(commentsRouter)
-app.include_router(likesRouter)
 
 @app.get("/")
 def ping():
