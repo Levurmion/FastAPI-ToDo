@@ -1,6 +1,6 @@
 import { TextareaHTMLAttributes } from "react";
 
 
-export interface CommentInputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaInputProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     notifyChange?: (currValue: string) => void
 }

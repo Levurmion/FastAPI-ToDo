@@ -14,7 +14,7 @@ router = APIRouter(
 
 @router.post("/sign-up", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(create_db)) -> schemas.User:
-    username_exists = crud.get_user_by_username(db, schemas.username)
+    username_exists = crud.get_user_by_username(db, user.username)
     if username_exists:
         raise HTTPException(status_code=409, detail="username already exists")
     return crud.create_user(db, user)

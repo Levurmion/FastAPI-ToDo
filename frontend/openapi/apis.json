@@ -84,11 +84,11 @@
                 }
             }
         },
-        "/users/": {
+        "/users": {
             "get": {
                 "tags": ["users"],
                 "summary": "Get Authenticated User",
-                "operationId": "get_authenticated_user_users__get",
+                "operationId": "get_authenticated_user_users_get",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -110,7 +110,7 @@
             "delete": {
                 "tags": ["users"],
                 "summary": "Delete Authenticated User",
-                "operationId": "delete_authenticated_user_users__delete",
+                "operationId": "delete_authenticated_user_users_delete",
                 "responses": {
                     "200": {
                         "description": "Successful Response",
@@ -859,6 +859,10 @@
                         "type": "boolean",
                         "title": "Edited"
                     },
+                    "poster": {
+                        "type": "string",
+                        "title": "Poster"
+                    },
                     "comments": {
                         "anyOf": [
                             {
@@ -889,7 +893,7 @@
                     }
                 },
                 "type": "object",
-                "required": ["content", "poster_id", "id", "posted_on", "edited"],
+                "required": ["content", "poster_id", "id", "posted_on", "edited", "poster"],
                 "title": "Post"
             },
             "PostCreate": {

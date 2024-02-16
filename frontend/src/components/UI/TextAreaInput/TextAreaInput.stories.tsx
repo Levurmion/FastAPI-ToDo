@@ -1,18 +1,18 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import CommentInput from "./CommentInput";
+import TextAreaInput from "./TextAreaInput";
 
 const meta = {
-    title: "Components/Comment Input",
+    title: "Components/Text Area Input",
     tags: ["autodocs"],
-    component: CommentInput,
+    component: TextAreaInput,
     decorators: (story) => {
         return <div className="w-[50vw]">{story()}</div>;
     },
     parameters: {
         layout: "centered",
     },
-} satisfies Meta<typeof CommentInput>;
+} satisfies Meta<typeof TextAreaInput>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

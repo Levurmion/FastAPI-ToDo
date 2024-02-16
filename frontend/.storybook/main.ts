@@ -11,7 +11,7 @@ const config: StorybookConfig = {
         "@storybook/addon-interactions",
         "@storybook/addon-a11y",
         "@storybook/addon-actions",
-        "storybook-addon-mock",
+        'storybook-addon-fetch-mock'
     ],
     framework: {
         name: "@storybook/nextjs",

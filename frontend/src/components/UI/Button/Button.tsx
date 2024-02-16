@@ -2,6 +2,7 @@
 
 import { ThemeBgColor } from "@/lib/color-palette/color-palette.types";
 import { ButtonColorMap, ButtonProps } from "./Button.types";
+import { forwardRef } from "react";
 
 const backgroundColorMap: ButtonColorMap = {
     primary: "bg-primary-600",
@@ -27,7 +28,7 @@ const textColorMap: ButtonColorMap = {
     danger: "text-white",
 };
 
-const Button = (props: ButtonProps) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     const { theme, children, ...buttonProps } = props;
     const backgroundColor = backgroundColorMap[theme];
     const hoverBackgroundColor = hoverBackgroundColorMap[theme];
@@ -35,12 +36,14 @@ const Button = (props: ButtonProps) => {
 
     return (
         <button
-            className={`flex items-center justify-center w-full px-4 py-1.5 rounded-sm ${backgroundColor} hover:${hoverBackgroundColor} ${textColor}`}
+            ref={ref}
+            className={`flex items-center justify-center w-full px-4 py-1.5 rounded-sm whitespace-nowrap ${backgroundColor} hover:${hoverBackgroundColor} ${textColor}`}
             {...buttonProps}
         >
             {children}
         </button>
     );
-};
+});
 
+Button.displayName = "Button"
 export default Button;

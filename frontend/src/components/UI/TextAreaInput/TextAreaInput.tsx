@@ -1,11 +1,11 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
-import { CommentInputProps } from "./CommentInput.types";
+import { TextAreaInputProps } from "./TextAreaInput.types";
 
-const CommentInput = (props: CommentInputProps) => {
+const TextAreaInput = (props: TextAreaInputProps) => {
     const [comment, setComment] = useState(props.value);
-    const { notifyChange } = props
+    const { notifyChange, ...textAreaProps } = props
 
     const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setComment(e.target.value)
@@ -19,7 +19,7 @@ const CommentInput = (props: CommentInputProps) => {
             </div>
             <textarea
                 className="col-start-1 col-end-2 row-start-1 row-end-2 appearance-none outline-none resize-none overflow-hidden w-full h-full p-2 bg-asphalt-900 rounded-md text-asphalt-100"
-                {...props}
+                {...textAreaProps}
                 rows={1}
                 value={comment}
                 onChange={handleChange}
@@ -28,4 +28,4 @@ const CommentInput = (props: CommentInputProps) => {
     );
 };
 
-export default CommentInput;
+export default TextAreaInput;

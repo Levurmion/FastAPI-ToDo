@@ -13,11 +13,11 @@ export interface paths {
     /** Authenticate User */
     post: operations["authenticate_user_auth_sign_in_post"];
   };
-  "/users/": {
+  "/users": {
     /** Get Authenticated User */
-    get: operations["get_authenticated_user_users__get"];
+    get: operations["get_authenticated_user_users_get"];
     /** Delete Authenticated User */
-    delete: operations["delete_authenticated_user_users__delete"];
+    delete: operations["delete_authenticated_user_users_delete"];
   };
   "/users/{user_id}/posts": {
     /** Get User Posts */
@@ -160,6 +160,8 @@ export interface components {
       posted_on: string;
       /** Edited */
       edited: boolean;
+      /** Poster */
+      poster: string;
       /** Comments */
       comments?: components["schemas"]["Comment"][] | null;
       /** Likes */
@@ -262,7 +264,7 @@ export interface operations {
     };
   };
   /** Get Authenticated User */
-  get_authenticated_user_users__get: {
+  get_authenticated_user_users_get: {
     responses: {
       /** @description Successful Response */
       200: {
@@ -273,7 +275,7 @@ export interface operations {
     };
   };
   /** Delete Authenticated User */
-  delete_authenticated_user_users__delete: {
+  delete_authenticated_user_users_delete: {
     responses: {
       /** @description Successful Response */
       200: {

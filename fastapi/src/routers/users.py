@@ -12,7 +12,7 @@ router = APIRouter(
 
 user_not_found_exception = HTTPException(status_code=404, detail="user not found")
 
-@router.get("/", response_model=schemas.User)
+@router.get("", response_model=schemas.User)
 def get_authenticated_user(token: AuthToken, db: Session = Depends(create_db)):
     user = crud.get_user_by_id(db, token.id)
     if user is None:
@@ -24,7 +24,7 @@ def get_user_posts(user_id: int, token: AuthToken, db: Session = Depends(create_
     user_posts = crud.get_user_posts(db, user_id)
     return user_posts
 
-@router.delete("/")
+@router.delete("")
 def delete_authenticated_user(token: AuthToken, db: Session = Depends(create_db)):
     user = crud.get_user_by_id(db, token.id)
     if user is None:
